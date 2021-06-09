@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +25,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::group(['middleware' => ['auth']], function() {
+Route::name('admin.')->middleware(['role:Super Admin|Admin'])->prefix('admin')->group(function () {
+    //Route::namespace('Admin')->prefix('admin')->group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
+    Route::get('dashbard', [HomeController::class, 'dashboard'])->name('dashboard');
 });
