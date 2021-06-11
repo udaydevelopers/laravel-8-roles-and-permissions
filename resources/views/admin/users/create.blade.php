@@ -4,10 +4,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Create New User</h2>
-        </div>
-        <div class="pull-right">
+        <div class="pull-right" style="float: right; padding: 5px;">
             <a class="btn btn-primary" href="{{ route('admin.users.index') }}"> Back</a>
         </div>
     </div>
@@ -26,7 +23,11 @@
 @endif
 
 
-
+<div class="card shadow mb-4">
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Create New User</h6>
+</div>
+<div class="card-body">
 {!! Form::open(array('route' => 'admin.users.store','method'=>'POST')) !!}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -64,7 +65,8 @@
     </div>
 </div>
 {!! Form::close() !!}
-
+</div>
+</div>
 
 
 @endsection

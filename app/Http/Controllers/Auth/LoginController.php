@@ -51,6 +51,7 @@ class LoginController extends Controller
                 return $redirectTo = route('admin.dashboard');
             break;
             case 'Admin':
+            case 'Editor':
                 return $redirectTo = route('admin.dashboard');
             break;
 

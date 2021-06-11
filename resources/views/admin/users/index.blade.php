@@ -4,9 +4,6 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Users Management</h2>
-        </div>
         <div class="pull-right" style="float: right; padding: 5px;">
             <a class="btn btn-success" href="{{ route('admin.users.create') }}"> Create New User</a>
         </div>
@@ -20,7 +17,12 @@
 </div>
 @endif
 
-
+<div class="card shadow mb-4">
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+</div>
+<div class="card-body">
+<div class="table-responsive">
 <table class="table table-bordered">
  <tr>
    <th>No</th>
@@ -55,7 +57,9 @@
   </tr>
  @endforeach
 </table>
-
+</div>
+</div>
+</div>
 
 {!! $data->render() !!}
 

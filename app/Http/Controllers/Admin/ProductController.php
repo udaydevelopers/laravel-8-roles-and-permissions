@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
     
@@ -28,7 +29,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->paginate(5);
-        return view('products.index', compact('products'))
+        return view('admin.products.index', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -39,7 +40,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $parentCategories = Category::where('parent_id', null)->get();
+
+        return view('admin.products.create', compact('parentCategories'));
     }
     
     /**
@@ -53,11 +56,14 @@ class ProductController extends Controller
         request()->validate([
             'name' => 'required',
             'detail' => 'required',
+            'price' => 'required',
+            'count' => 'required',
+            'category_id' => 'required'
         ]);
     
         Product::create($request->all());
     
-        return redirect()->route('products.index')
+        return redirect()->route('admin.products.index')
                         ->with('success', 'Product created successfully.');
     }
     
@@ -69,7 +75,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        return view('admin.products.show', compact('product'));
     }
     
     /**
@@ -80,7 +86,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        return view('admin.products.edit', compact('product'));
     }
     
     /**
@@ -99,7 +105,7 @@ class ProductController extends Controller
     
         $product->update($request->all());
     
-        return redirect()->route('products.index')
+        return redirect()->route('admin.products.index')
                         ->with('success', 'Product updated successfully');
     }
     
@@ -113,7 +119,7 @@ class ProductController extends Controller
     {
         $product->delete();
     
-        return redirect()->route('products.index')
+        return redirect()->route('admin.products.index')
                         ->with('success', 'Product deleted successfully');
     }
 }

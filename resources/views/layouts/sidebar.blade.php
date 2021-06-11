@@ -51,10 +51,12 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Roles Management:</h6>
                         <a class="collapse-item" href="{{ route('admin.roles.index') }}">Role List</a>
-                        <a class="collapse-item" href="{{ route('admin.roles.index') }}">Create New Role</a>
+                        <a class="collapse-item" href="{{ route('admin.roles.create') }}">Create New Role</a>
                     </div>
                 </div>
             </li>
+            @endhasanyrole
+            @hasanyrole('Super Admin|Admin|Editor')
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collaplseCategory"
@@ -66,8 +68,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Category Management:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Category List</a>
-                        <a class="collapse-item" href="utilities-color.html">Create New Category</a>
+                        <a class="collapse-item" href="{{ route('admin.categories.index') }}">Category List</a>
+                        <a class="collapse-item" href="{{ route('admin.categories.create') }}">Create New Category</a>
                     </div>
                 </div>
             </li>
@@ -82,10 +84,14 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Product Management:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Product List</a>
-                        <a class="collapse-item" href="utilities-color.html">Create New Product</a>
+                        <a class="collapse-item" href="{{ route('admin.products.index') }}">Product List</a>
+                        <a class="collapse-item" href="{{ route('admin.products.create') }}">Create New Product</a>
                     </div>
                 </div>
             </li>
             @endhasanyrole
+            <hr class="sidebar-divider d-none d-md-block">
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
         </ul>

@@ -11,10 +11,15 @@ class Product extends Model
 
     /**
      * The attributes that are mass assignable.
-     *	
+     *
      * @var array
      */
     protected $fillable = [
-        'name', 'detail'
+        'name', 'detail','price','count','category_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTO(Category::class);
+    }
 }

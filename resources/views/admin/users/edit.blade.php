@@ -1,19 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit New User</h2>
-        </div>
-        <div class="pull-right">
+        <div class="pull-right" style="float: right; padding: 5px;">
             <a class="btn btn-primary" href="{{ route('admin.users.index') }}"> Back</a>
         </div>
     </div>
 </div>
 
-
+<div class="card shadow mb-4">
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Edit New User</h6>
+</div>
+<div class="card-body">
 @if (count($errors) > 0)
   <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -63,6 +64,7 @@
     </div>
 </div>
 {!! Form::close() !!}
-
+</div>
+</div>
 
 @endsection
